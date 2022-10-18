@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-0 min-vh-100 bg-light">
-    <div class="container pt-3">
+    <div class="container py-3">
       <div class="text-center">
         <h1>Task Board</h1>
         <p class="fs-5">Create a list of tasks</p>
