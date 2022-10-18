@@ -1,18 +1,34 @@
 <template>
-  <div>
-    <h1>Task Board</h1>
-    <p>Create a list of tasks</p>
-    <div>
-      <input
-        type="text"
-        v-model="newTask"
-        placeholder="Add a new task"
-        @keypress.enter="addTask"
-      />
-      <button @click="addTask">Add</button>
-    </div>
-    <div>
-      <Task v-for="(task, i) in $store.state.tasks" :key="i" :task="task" />
+  <div class="container-fluid p-0 min-vh-100 bg-light">
+    <div class="container pt-3">
+      <div class="text-center">
+        <h1>Task Board</h1>
+        <p class="fs-5">Create a list of tasks</p>
+      </div>
+
+      <div class="d-flex justify-content-center pb-3">
+        <div class="flex-fill me-3">
+          <input
+            type="text"
+            class="form-control border-0 border-bottom bg-transparent"
+            v-model="newTask"
+            placeholder="Add a new task"
+            @keypress.enter="addTask"
+          />
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-success shadow-sm"
+            @click="addTask"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      <div>
+        <Task v-for="(task, i) in $store.state.tasks" :key="i" :task="task" />
+      </div>
     </div>
   </div>
 </template>
