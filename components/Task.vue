@@ -1,5 +1,10 @@
 <template>
-  <div class="row shadow-sm p-2 mb-2 bg-white rounded">
+  <div
+    :class="{
+      'row shadow-sm p-2 mb-2 bg-white rounded': !task.done,
+      'row shadow-sm p-2 mb-2 rounded': task.done,
+    }"
+  >
     <div class="col p-0">
       <span :class="{ 'text-decoration-line-through text-muted': task.done }">{{
         task.content
