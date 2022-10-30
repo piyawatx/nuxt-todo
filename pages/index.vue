@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid p-0 min-vh-100 bg-light">
-    <div class="container py-3">
+  <div class="container-fluid p-0 min-vh-100 bg-light" >
+    <div class="container py-3" style="max-width: 720px">
       <div class="text-center">
         <h1>Task Board</h1>
         <p class="fs-5">Create a list of tasks</p>
@@ -36,6 +36,16 @@
 <script>
 export default {
   name: 'IndexPage',
+  mounted() {
+    if (localStorage.getItem('tasks')) {
+      try {
+        let tasks = JSON.parse(localStorage.getItem('tasks'))
+        this.$store.commit('setTasks', tasks)
+      } catch (e) {
+        localStorage.removeItem('tasks')
+      }
+    }
+  },
   data() {
     return {
       newTask: '',
@@ -46,6 +56,7 @@ export default {
       if (this.newTask) {
         this.$store.commit('addTask', this.newTask)
         this.newTask = ''
+        this.$store.dispatch('saveTasks')
       }
     },
   },

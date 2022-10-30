@@ -38,9 +38,11 @@ export default {
   methods: {
     toggleDone() {
       this.$store.commit('toggleTask', this.task)
+      this.$store.dispatch('saveTasks')
     },
     removeTask() {
       this.$store.commit('removeTask', this.task)
+      this.$store.dispatch('saveTasks')
     },
   },
 }

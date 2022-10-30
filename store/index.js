@@ -12,4 +12,15 @@ export const mutations = {
   toggleTask(state, task) {
     task.done = !task.done
   },
+  setTasks(state, tasks) {
+    state.tasks = tasks
+  },
+}
+
+export const actions = {
+  saveTasks({ state }) {
+    const parsed = JSON.stringify(state.tasks)
+    localStorage.setItem('tasks', parsed)
+    console.log(localStorage.tasks)
+  },
 }
